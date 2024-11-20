@@ -1,11 +1,12 @@
 ﻿ using Interfaces;
 
-var logger = new FileLogger();
-var orderService = new OrderService(logger);
-orderService.ProcessOrder("12345"); 
-orderService.ProcessOrder("67891");
+var consoleLogger = new ConsoleLogger();
 
-var filelogger = new FileLogger();
+var orderService = new OrderService(consoleLogger);
+orderService.ProcessOrder("123456");
+orderService.ProcessOrder("789101");
+
+var filelogger = new FileLogger("./logger.txt");
 var orderServiceWithFileLogging = new OrderService(filelogger);
-orderService.ProcessOrder("KannNix"); 
-orderService.ProcessOrder("RaffNix");
+orderServiceWithFileLogging.ProcessOrder("KannNix"); 
+orderServiceWithFileLogging.ProcessOrder("RaffNix");
